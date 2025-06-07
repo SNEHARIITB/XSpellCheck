@@ -28,7 +28,7 @@ const XSpellCheck = () => {
     });
 
     if (misspelledWord) {
-      const corrected = customDictionary[misspelledWord.toLowerCase()];
+      const corrected = customDictionary[misspelledWord.toLowerCase()] || " ";
       setSuggestion(`Did you mean: ${corrected}?`);
     } else {
       setSuggestion('');
@@ -37,13 +37,13 @@ const XSpellCheck = () => {
 
   return (
     <div style={{ padding: '20px', fontFamily: 'Arial', maxWidth: '500px', margin: 'auto' }}>
-      <h2>XSpellCheck</h2>
+      <h2>Spell Check and Auto-Correction</h2>
       <textarea
         rows="5"
         cols="50"
         value={text}
         onChange={handleChange}
-        placeholder="Type something..."
+        placeholder="Enter text..."
         style={{ padding: '10px', fontSize: '16px', width: '100%' }}
       />
       {suggestion && (
